@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const { Schema, Types } = mongoose;
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 
 const userSchema = new mongoose.Schema({
-  _id: { type: Types.ObjectID, required: true },
+  _id: { type: ObjectId, required: true },
   nama: { type: String, required: true },
   username: { type: String, required: true },
   password: { type: String, required: true },
@@ -11,7 +12,7 @@ const userSchema = new mongoose.Schema({
   statusJob: { type: Boolean, default: false },
   block: { type: String },
   jobVacancies: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type:ObjectId,
     ref: 'jobVacancies'
   }],
   CV: { type: String },
@@ -22,20 +23,20 @@ const userSchema = new mongoose.Schema({
   salary: { type: Number },
 
   education: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type:ObjectId,
     ref: 'educationUser'
   }],
   isPremium: { type: Boolean, default: false },
   organization: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type:ObjectId,
     ref: 'organizationUser'
   }],
   experience: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type:ObjectId,
     ref: 'experienceUser'
   }],
   skill: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type:ObjectId,
     ref: 'skillUser'
   }],
 
@@ -47,15 +48,15 @@ const userSchema = new mongoose.Schema({
   wargaNegara: { type: String },
   bio: { type: String },
   refrensi: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type:ObjectId,
     ref: 'refrensiUser'
   }],
   refrensi: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type:ObjectId,
     ref: 'certificateUser'
   }]
 }, {
   timestamps: true
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('user', userSchema);

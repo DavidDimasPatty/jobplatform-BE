@@ -1,9 +1,10 @@
-const mongoose = require('mogoose');
-const { Schema, Types } = mongoose
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 
 
 const experienceUserSchema = new mongoose.Schema({
-    _id: { type: Types.ObjectID, required: false },
+    _id: { type:ObjectId, required: false },
     namaTempat: { type: String, required: true },
     jabatan: { type: String, required: true },
     posisi: { type: String, required: true },

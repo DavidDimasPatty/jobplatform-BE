@@ -1,9 +1,10 @@
-const mongoose = require('mogoose');
-const { Schema, Types } = mongoose
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 
 
 const educationUserSchema = new mongoose.Schema({
-    _id: { type: Types.ObjectID, required: false },
+    _id: { type: ObjectId, required: false },
     namaTempat: { type: String, required: true },
     tingkatan: { type: String, required: true },
     dateStart: { type: Date, required: true },
