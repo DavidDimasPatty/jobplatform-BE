@@ -52,9 +52,9 @@ exports.getAllUser = async (req, res) => {
 
 exports.getUserDetail = async (req, res) => {
   try {
-    const userId = req.body;
+  const { userId } = req.body; 
     if (!userId) {
-      return res.status(400).json({ message: "Not Found" })
+      return res.status(400).json({ message: "Not Valid" })
     }
 
     const userDetail = await User.findById(userId);
