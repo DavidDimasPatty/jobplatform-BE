@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const userSchema = new mongoose.Schema({
-  _id: { type: ObjectId, required: true },
+  _id: { type: ObjectId },
   nama: { type: String, required: true },
   username: { type: String, required: true },
   password: { type: String, required: true },
@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   statusJob: { type: Boolean, default: false },
   block: { type: String },
   jobVacancies: [{
-    type:ObjectId,
+    type: ObjectId,
     ref: 'jobVacancies'
   }],
   CV: { type: String },
@@ -23,20 +23,20 @@ const userSchema = new mongoose.Schema({
   salary: { type: Number },
 
   education: [{
-    type:ObjectId,
+    type: ObjectId,
     ref: 'educationUser'
   }],
   isPremium: { type: Boolean, default: false },
   organization: [{
-    type:ObjectId,
+    type: ObjectId,
     ref: 'organizationUser'
   }],
   experience: [{
-    type:ObjectId,
+    type: ObjectId,
     ref: 'experienceUser'
   }],
   skill: [{
-    type:ObjectId,
+    type: ObjectId,
     ref: 'skillUser'
   }],
 
@@ -48,15 +48,16 @@ const userSchema = new mongoose.Schema({
   wargaNegara: { type: String },
   bio: { type: String },
   refrensi: [{
-    type:ObjectId,
+    type: ObjectId,
     ref: 'refrensiUser'
   }],
-  refrensi: [{
-    type:ObjectId,
+  certificate: [{
+    type: ObjectId,
     ref: 'certificateUser'
   }]
 }, {
-  timestamps: true
+  timestamps: true,
+  collection: 'user'
 });
 
 module.exports = mongoose.model('user', userSchema);

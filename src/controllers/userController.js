@@ -1,6 +1,5 @@
-const user = require('../models/user');
 const User = require('../models/user');
-
+const mongoose = require('mongoose');
 exports.hello = async (req, res) => {
   const users = await User.find();
   res.json({ message: 'Hello from backend!', users });
@@ -41,7 +40,9 @@ exports.login = async (req, res) => {
 
 exports.getAllUser = async (req, res) => {
   try {
-    const user = await User.find().limit(20)
+    const user = await User.find().limit(20);
+    //const user = await mongoose.connection.db.collection('user').find({}).limit(5).toArray();
+    //console.log(user);
     return res.status(200).json({ user });
   }
   catch (err) {
@@ -80,7 +81,7 @@ exports.getUserFilter = async (req, res) => {
     const users = await User.find({ jobVacancies: { $in: vacancyIds } })
       .populate('jobVacancies')
       .limit(20);
-      
+
     if (!users) {
       return res.status(400).json({ message: "Not Found" })
     }
