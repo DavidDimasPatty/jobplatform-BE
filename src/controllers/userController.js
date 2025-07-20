@@ -2,7 +2,7 @@ const User = require('../models/user');
 const mongoose = require('mongoose');
 exports.hello = async (req, res) => {
   const users = await User.find();
-  res.json({ message: 'Hello from backend!', users });
+  res.json({ message: 'Hello Vercel!', users });
 };
 
 exports.signup = async (req, res) => {
