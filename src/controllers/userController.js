@@ -1,7 +1,8 @@
 const User = require('../models/user');
 const mongoose = require('mongoose');
+
 exports.hello = async (req, res) => {
-  const users = await User.find();
+  // const users = await User.find();
   res.json({ message: 'Hello Vercel!', users });
 };
 
